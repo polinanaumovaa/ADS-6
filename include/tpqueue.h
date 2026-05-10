@@ -1,7 +1,9 @@
 // Copyright 2022 NNTU-CS
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
+
 #include <stdexcept>
+
 template<typename T>
 class TPQueue {
  private:
@@ -11,6 +13,7 @@ class TPQueue {
     explicit Item(const T& value) : data(value), next(nullptr) {}
   };
   Item* head;
+
  public:
   TPQueue() : head(nullptr) {}
   ~TPQueue() {
@@ -41,8 +44,8 @@ class TPQueue {
     }
     Item* current = head;
     while (current->next != nullptr &&
-      current->next->data.prior >= value.prior) {
-        current = current->next;
+        current->next->data.prior >= value.prior) {
+      current = current->next;
     }
     nnItem->next = current->next;
     current->next = nnItem;
